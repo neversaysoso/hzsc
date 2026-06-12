@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="container header-content">
-      <RouterLink to="/" class="logo">AMK 杭州上池科技有限公司</RouterLink>
+      <RouterLink to="/" class="logo">杭州上池科技有限公司</RouterLink>
       <nav class="nav-menu">
         <ul>
           <li :class="{ active: isAbout }"><RouterLink to="/about">公司简介</RouterLink></li>
@@ -132,15 +132,21 @@ nav :deep(a):hover {
   font-weight: 600;
 }
 .dropdown-content {
-  display: none;
+  display: block;
   position: absolute;
   top: 100%;
   left: 0;
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
   min-width: 220px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  transform-origin: top left;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+  pointer-events: none;
 }
 .dropdown-content :deep(a) {
   padding: 12px 18px;
@@ -149,13 +155,17 @@ nav :deep(a):hover {
   line-height: normal;
 }
 .dropdown:hover .dropdown-content {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 /* 联系我们下拉样式 */
 .contact-dropdown {
   padding: 16px 20px;
   min-width: 300px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 45%, #eef6ff 100%);
 }
 .contact-item {
   padding: 8px 0;
