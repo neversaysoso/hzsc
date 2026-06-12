@@ -68,4 +68,42 @@ footer {
   text-align: center;
   padding: 30px 0;
 }
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 48px 0;
+  }
+
+  .section-title {
+    margin-bottom: 32px;
+    font-size: 26px;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-item {
+    padding: 18px 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(26, 54, 93, 0.06);
+    text-align: left;
+  }
+
+  .contact-item h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .contact-item p {
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 20px 0;
+  }
+}
 </style>
