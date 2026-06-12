@@ -442,6 +442,10 @@ watch(
     padding: 30px 16px;
   }
 
+  .product-bg {
+    display: none;
+  }
+
   .title {
     font-size: 28px;
   }
