@@ -10,7 +10,7 @@
             <span class="dropbtn">核心技术 ▾</span>
             <div class="dropdown-content">
               <RouterLink to="/tech/1">高压电系数粉体配方</RouterLink>
-              <RouterLink to="/tech/2">多层共烧工艺</RouterLink>
+              <RouterLink to="/tech/2">高可靠性质量管控</RouterLink>
               <RouterLink to="/tech/3">高一致性控制</RouterLink>
             </div>
           </li>
@@ -22,11 +22,27 @@
               <RouterLink to="/product/2">压电陶瓷片</RouterLink>
               <RouterLink to="/product/3">超高温压电陶瓷片</RouterLink>
               <RouterLink to="/product/4">压电陶瓷换能片</RouterLink>
-              <RouterLink to="/product/5">堆叠型与共烧型压电陶瓷</RouterLink>
               <RouterLink to="/product/6">堆栈式压电陶瓷执行器</RouterLink>
               <RouterLink to="/product/7">弹簧封装型压电执行器</RouterLink>
               <RouterLink to="/product/8">全金属密封型压电执行器</RouterLink>
               <RouterLink to="/product/9">波纹管密封型压电执行器</RouterLink>
+            </div>
+          </li>
+
+          <li class="dropdown" :class="{ active: isApplication }">
+            <span class="dropbtn">行业应用 ▾</span>
+            <div class="dropdown-content">
+              <RouterLink to="/application/1">压电点胶阀</RouterLink>
+              <RouterLink to="/application/2">压电位移平台</RouterLink>
+              <RouterLink to="/application/3">压电泵</RouterLink>
+              <RouterLink to="/application/4">锡滴发生器</RouterLink>
+              <RouterLink to="/application/5">压电风扇</RouterLink>
+              <RouterLink to="/application/6">光线准直器</RouterLink>
+              <RouterLink to="/application/7">压电变形镜</RouterLink>
+              <RouterLink to="/application/8">压电快反镜</RouterLink>
+              <RouterLink to="/application/9">压电扫描</RouterLink>
+              <RouterLink to="/application/10">超声焊接</RouterLink>
+              <RouterLink to="/application/11">超声清洗</RouterLink>
             </div>
           </li>
 
@@ -45,6 +61,10 @@
                 <span>电话</span>
                 <p>周经理：13804040626</p>
               </div>
+              <div class="contact-item">
+                <span>邮箱</span>
+                <p>zhoufu2008@163.com</p>
+              </div>
             </div>
           </li>
         </ul>
@@ -61,6 +81,7 @@ const route = useRoute()
 const isAbout = computed(() => route.path === '/about')
 const isTech = computed(() => route.path.startsWith('/tech'))
 const isProduct = computed(() => route.path.startsWith('/product'))
+const isApplication = computed(() => route.path.startsWith('/application'))
 </script>
 
 <style scoped>

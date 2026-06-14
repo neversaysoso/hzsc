@@ -3,7 +3,7 @@
     <div class="container">
       <div class="detail-wrap">
         <div class="detail-img">
-          <div class="placeholder-img">技术图片</div>
+          <img class="tech-image" :src="techData.img" :alt="techData.name" />
         </div>
 
         <div class="detail-info">
@@ -23,16 +23,19 @@ const route = useRoute()
 const techList = {
   1: {
     name: '高压电系数粉体配方',
+    img: '/assets/tech/1.png',
     content:
       '<p>自研专属粉体配比方案，压电系数表现优异</p><p>耐温区间宽泛，高低温环境性能衰减低</p><p>原材料纯度把控严格，从源头保障器件品质</p>',
   },
   2: {
-    name: '多层共烧工艺',
+    name: '高可靠性质量管控',
+    img: '/assets/tech/2.png',
     content:
-      '<p>低温多层堆叠烧结技术，减少内部应力损伤</p><p>层间贴合紧密，导电与形变性能均衡稳定</p><p>规模化量产工艺成熟，良品率稳居高位</p>',
+      '<p>来料检验严格，关键原材料逐批审核把关</p><p>工段质量管控全程覆盖，实时监测关键过程参数</p><p>出场老化验证完整，确保长期运行稳定可靠</p><p>执行高于常规行业要求的内部标准，保障批次一致性</p>',
   },
   3: {
     name: '高一致性控制',
+    img: '/assets/tech/3.png',
     content:
       '<p>全流程精密参数管控，批量产品误差极小</p><p>自动化检测筛选，剔除性能偏差工件</p><p>标准化生产体系，批次之间品质无明显差异</p>',
   },
@@ -70,15 +73,10 @@ watch(
   flex-shrink: 0;
 }
 
-.placeholder-img {
+.tech-image {
   width: 100%;
   height: 320px;
-  background: #f3f4f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #9ca3af;
-  font-size: 16px;
+  object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }

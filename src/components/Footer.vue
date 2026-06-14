@@ -18,7 +18,7 @@
         </div>
         <div class="contact-item">
           <h3>邮箱</h3>
-          <p>hzsc001@mail.com</p>
+          <p>zhoufu2008@163.com</p>
         </div>
       </div>
     </div>

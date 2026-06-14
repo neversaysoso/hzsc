@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import TechDetail from '../views/TechDetail.vue'
 import CompanyDetail from '../views/CompanyDetail.vue'
+import IndustryDetail from '../views/IndustryDetail.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/tech/:id',
     name: 'TechDetail',
     component: TechDetail,
+  },
+  {
+    path: '/application/:id',
+    name: 'IndustryDetail',
+    component: IndustryDetail,
   },
 ]
 
