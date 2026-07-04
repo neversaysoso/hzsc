@@ -77,7 +77,7 @@
           :to="`/product/${item.id}`"
         >
           <div class="product-img">
-            <img :src="item.img" :alt="item.name" />
+            <LazyImage :src="item.img" :alt="item.name" />
           </div>
           <div class="product-info">
             <h3>{{ item.name }}</h3>
@@ -99,7 +99,7 @@
           :to="`/application/${item.id}`"
         >
           <div class="application-img">
-            <img :src="item.img" :alt="item.name" />
+            <LazyImage :src="item.img" :alt="item.name" />
           </div>
           <div class="application-info">
             <h3>{{ item.name }}</h3>
@@ -132,6 +132,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useHead } from '@vueuse/head'
+import LazyImage from '../components/LazyImage.vue'
 
 useHead({
 	title: '杭州上池科技有限公司 - 压电陶瓷材料与执行器厂家',

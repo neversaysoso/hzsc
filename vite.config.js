@@ -5,13 +5,30 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash:8].[ext]',
+        chunkFileNames: 'assets/[name]-[hash:8].js',
+        entryFileNames: 'assets/[name]-[hash:8].js',
+      },
+    },
+    minify: 'terser',
+    cssCodeSplit: true,
+    sourcemap: false,
+  },
+  server: {
+    headers: {
+      'Cache-Control': 'public, max-age=31536000',
+      'Access-Control-Allow-Origin': '*',
     },
   },
   ssgOptions: {

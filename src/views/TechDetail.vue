@@ -3,7 +3,7 @@
     <div class="container">
       <div class="detail-wrap">
         <div class="detail-img">
-          <img class="tech-image" :src="techData.img" :alt="techData.name" />
+          <LazyImage class="tech-image" :src="techData.img" :alt="techData.name" />
         </div>
 
         <div class="detail-info">
@@ -19,6 +19,7 @@
 import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@vueuse/head'
+import LazyImage from '../components/LazyImage.vue'
 
 const route = useRoute()
 const techList = {
