@@ -48,8 +48,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const productList = {
@@ -324,15 +325,22 @@ watch(
         },
       ],
     }
-    // set page title for SEO
-    try {
-      document.title = `${productData.value.name} - 杭州上池科技有限公司`
-    } catch (e) {
-      // ignore in non-browser env
-    }
   },
   { immediate: true }
 )
+
+const pageTitle = computed(() => `${productData.value.name} - 杭州上池科技有限公司`)
+const pageDesc = computed(() => `${productData.value.name} - 杭州上池科技有限公司压电陶瓷产品详情，适用于精密驱动、传感检测、超声及高端工业场景。`)
+const canonicalUrl = computed(() => `https://hzsc.net.cn/product/${route.params.id}`)
+
+useHead({
+	title: pageTitle,
+	meta: [
+		{ name: 'description', content: pageDesc },
+		{ name: 'robots', content: 'index, follow' },
+	],
+	link: [{ rel: 'canonical', href: canonicalUrl }],
+})
 </script>
 
 <style scoped>

@@ -26,6 +26,20 @@
 </template>
 
 <script setup>
+import { useHead } from '@vueuse/head'
+
+useHead({
+	title: '杭州上池科技有限公司 - 公司简介',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'了解杭州上池科技有限公司的公司简介、先进陶瓷研发能力、质量管控体系与应用场景。',
+		},
+		{ name: 'robots', content: 'index, follow' },
+	],
+	link: [{ rel: 'canonical', href: 'https://hzsc.net.cn/about' }],
+})
 </script>
 
 <style scoped>

@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import TechDetail from '../views/TechDetail.vue'
 import CompanyDetail from '../views/CompanyDetail.vue'
 import IndustryDetail from '../views/IndustryDetail.vue'
 
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'Home',
@@ -33,12 +33,14 @@ const routes = [
   },
 ]
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior() {
-    return { top: 0 }
-  },
-})
+export function createRouterInstance() {
+  return createRouter({
+    history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
+    routes,
+    scrollBehavior() {
+      return { top: 0 }
+    },
+  })
+}
 
-export default router
+export default createRouterInstance

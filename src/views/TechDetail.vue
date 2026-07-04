@@ -16,8 +16,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const techList = {
@@ -49,6 +50,19 @@ watch(
   },
   { immediate: true }
 )
+
+const pageTitle = computed(() => `${techData.value.name} - 杭州上池科技有限公司`)
+const pageDesc = computed(() => `${techData.value.name} - 杭州上池科技有限公司核心技术介绍，聚焦来料检验、工段质量管控、出场老化验证与严格标准。`)
+const canonicalUrl = computed(() => `https://hzsc.net.cn/tech/${route.params.id}`)
+
+useHead({
+	title: pageTitle,
+	meta: [
+		{ name: 'description', content: pageDesc },
+		{ name: 'robots', content: 'index, follow' },
+	],
+	link: [{ rel: 'canonical', href: canonicalUrl }],
+})
 </script>
 
 <style scoped>

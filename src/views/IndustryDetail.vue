@@ -16,8 +16,9 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
 
 const route = useRoute()
 const applicationList = {
@@ -100,6 +101,19 @@ watch(
   },
   { immediate: true }
 )
+
+const pageTitle = computed(() => `${applicationData.value.name} - 杭州上池科技有限公司`)
+const pageDesc = computed(() => `${applicationData.value.name} - 杭州上池科技有限公司行业应用介绍，适用于精密控制、检测、焊接与清洗等场景。`)
+const canonicalUrl = computed(() => `https://hzsc.net.cn/application/${route.params.id}`)
+
+useHead({
+	title: pageTitle,
+	meta: [
+		{ name: 'description', content: pageDesc },
+		{ name: 'robots', content: 'index, follow' },
+	],
+	link: [{ rel: 'canonical', href: canonicalUrl }],
+})
 </script>
 
 <style scoped>

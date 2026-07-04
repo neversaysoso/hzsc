@@ -131,6 +131,20 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useHead } from '@vueuse/head'
+
+useHead({
+	title: '杭州上池科技有限公司 - 压电陶瓷材料与执行器厂家',
+	meta: [
+		{
+			name: 'description',
+			content:
+				'杭州上池科技有限公司专注压电陶瓷材料、压电陶瓷片、压电执行器与高温压电陶瓷解决方案，服务半导体、医疗、工业传感和航空航天领域。',
+		},
+		{ name: 'robots', content: 'index, follow' },
+	],
+	link: [{ rel: 'canonical', href: 'https://hzsc.net.cn/' }],
+})
 
 const products = ref([
   {
