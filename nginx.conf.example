@@ -1,0 +1,56 @@
+server {
+    listen 80;
+    server_name hzsc.net.cn www.hzsc.net.cn;
+
+    root /path/to/your/dist;
+    index index.html;
+
+    # 静态文件缓存
+    location ~* \.(jpg|jpeg|png|gif|ico|svg|webp|css|js|woff|woff2|ttf)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+
+    # 图片文件（确保正确处理）
+    location ~* \.(jpg|jpeg|png|gif)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # SPA 路由支持
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 预渲染的静态 HTML 文件
+    location ~ /product/ {
+        try_files $uri.html $uri/ /product/$uri.html =404;
+    }
+
+    location ~ /tech/ {
+        try_files $uri.html $uri/ /tech/$uri.html =404;
+    }
+
+    location ~ /application/ {
+        try_files $uri.html $uri/ /application/$uri.html =404;
+    }
+
+    location = /about {
+        try_files /about.html =404;
+    }
+
+    # gzip 压缩
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+    gzip_min_length 1024;
+}
+
+# HTTPS 配置（如果使用 SSL）
+# server {
+#     listen 443 ssl;
+#     server_name hzsc.net.cn www.hzsc.net.cn;
+#     ssl_certificate /path/to/cert.crt;
+#     ssl_certificate_key /path/to/cert.key;
+#     # ... 其他配置同上
+# }

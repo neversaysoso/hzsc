@@ -8,17 +8,19 @@
           <div class="detail-sections">
             <template v-for="(section, index) in productData.sections" :key="index">
               <div v-if="section.type === 'image'" class="section-image">
-                <LazyImage
+                <img
                   :src="section.src"
                   :alt="productData.name"
+                  loading="lazy"
                 />
               </div>
               <div v-else-if="section.type === 'gallery'" class="section-gallery">
-                <LazyImage
+                <img
                   v-for="(src, imgIndex) in section.images"
                   :key="imgIndex"
                   :src="src"
                   :alt="`${productData.name} 图 ${imgIndex + 1}`"
+                  loading="lazy"
                 />
               </div>
               <div
@@ -26,11 +28,12 @@
                 :class="['section-pair', section.equal ? 'pair-equal' : '']"
                 :style="{ gridTemplateColumns: section.widths?.join(' ') || '1fr 1fr' }"
               >
-                <LazyImage
+                <img
                   v-for="(src, imgIndex) in section.images"
                   :key="imgIndex"
                   :src="src"
                   :alt="`${productData.name} 图 ${imgIndex + 1}`"
+                  loading="lazy"
                 />
               </div>
               <div
@@ -50,7 +53,6 @@
 import { ref, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@vueuse/head'
-import LazyImage from '../components/LazyImage.vue'
 
 const route = useRoute()
 const productList = {
